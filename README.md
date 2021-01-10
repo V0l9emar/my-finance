@@ -385,7 +385,7 @@ ORDER BY transaction.trs_id ASC
 ---
 
 ## 7. Wireframes или Figma или Design
-
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/7a9c55105929768862aa52d03155c174-full.png)
 ---
 
 # 8. Pages (Main (лого поля логин и регитсрация), Monthly Daily диаграмма, таблица и фунциональность добавить + - транзации)
