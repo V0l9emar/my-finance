@@ -60,39 +60,190 @@
 
 #### react-router:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/9d26858a871d134701a5301b73f1260b-full.png)
+```
+import { BrowserRouter, Route } from "react-router-dom";
+    <BrowserRouter>
+      <Route path="/start">
+        <div className="App">
+          <Start />
+        </div>
+      </Route>
+      <Route path="/login">
+        <div className="App">
+          <Login />
+        </div>
+      </Route>
+      <Route path="/form">
+        <div className="App">
+          <Form />
+        </div>
+      </Route>
+      <Route path="/main">
+        <div className="App">
+          <Main />
+        </div>
+      </Route>
+      <Route path="/daily">
+        <div className="App">
+          <Daily />
+        </div>
+      </Route>
+      <Route path="/weekly">
+        <div className="App">
+          <Weekly />
+        </div>
+      </Route>
+      <Route path="/monthly">
+        <div className="App">
+          <Monthly />
+        </div>
+      </Route>
+    </BrowserRouter>
+```
 
 #### Spiner:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/a717d0bef032a1a224fc66179a065c23-full.png)
+```
+  const [isLoading, setLoading] = useState(true);
+
+  function fakeRequest() {
+    return new Promise((resolve) => setTimeout(() => resolve(), 3000));
+  }
+
+  useEffect(() => {
+    fakeRequest().then(() => {
+      const el = document.querySelector(".loader-container");
+      if (el) {
+        el.remove();
+        setLoading(!isLoading);
+      }
+    });
+  }, []);
+
+  if (isLoading) {
+    return null;
+  }
+```
 
 #### Axios:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/a308862511294ca80664364f928ef042-full.png)
+```
+useEffect(() => {
+    Axios.get("http://localhost:5000/transactions").then((response) => {
+      getList(response.data);
+      console.log(response.data);
+    });
+}, []);
+```
 
 #### GET Updated balance on each operation:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/553fc28ca96d7883096f9887f1ba2663-full.png)
+```
+  useEffect(() => {
+    Axios.get("http://localhost:5000/balance").then((response) => {
+      let res;
+      let dataFrom = response.data;
+      let idx = dataFrom.length - 1;
+      if (idx === -1) {
+        res = 0;
+      } else {
+        res = dataFrom[idx].balance;
+      }
+      getBalance(res);
+    });
+  }, []);
+```
 
 #### Use Hooks:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6e42d420ac2a502094ca07d5cfa2c151-full.png)
+```
+  const [toName, setToName] = useState("");
+  const [trsInc, setTrsInc] = useState("");
+  const [trsOut, setTrsOut] = useState("");
+  const [createList, getList] = useState([]);
+```
 
 #### Use In/Out for Chart graphic:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6ed00b586de7a720d118b7503a67524f-full.png)
+```
+  useEffect(() => {
+    Axios.get("http://localhost:5000/incomeSum").then((response) => {
+      let income = response.data;
+      income.map((val) => {
+        let incomeSumVal = val.trs_inc;
+        setShowSumIncome(incomeSumVal);
+      });
+    });
+  }, []);
+  useEffect(() => {
+    Axios.get("http://localhost:5000/outcomeSum").then((response) => {
+      let outcome = response.data;
+      outcome.map((val) => {
+        let outcomeSumVal = val.trs_out;
+        setShowSumOut(outcomeSumVal);
+      });
+    });
+  }, []);
+```
 
 #### Post Transacion to DataBase:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/02348c5f12aab704e2b8ea2726dbb590-full.png)
+```
+  const submitOperationInc = () => {
+    Axios.post("http://localhost:5000/transactions", {
+      fromName: fromName,
+      toName: toName,
+      trsInc: trsInc,
+      trsOut: 0,
+    }).then(() => {
+      alert("successful insert transaction");
+    });
+    window.location.reload(false);
+  };
+```
 
 #### React Charts:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/f7a49f4bb007413a0850d298c97b72c0-full.png)
+```
+  const data = {
+    labels: ["Income", "Outcome"],
+    datasets: [
+      {
+        label: "# of Votes",
+        data: [showSumIncome, showSumOut],
+        backgroundColor: ["#60C6D8", "#c750a3"],
+        borderColor: ["#60C6D8", "#c750a3"],
+        borderWidth: 1,
+      },
+    ],
+  };
+```
 
 #### Created Transaction Table from DataBase:
 
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/54c8dc3bd87939c4155f03a738b10c48-full.png)
+```
+<tbody>
+  {createList.map((val) => {
+    return (
+      <tr key={val.trs_id}>
+        <td>{val.name_from}</td>
+        <td>{val.name_to}</td>
+        <td>{val.trs_inc}</td>
+        <td>{val.trs_out}</td>
+      </tr>
+    );
+  })}
+</tbody>
+```
+
+#### Route Link to Month/Week/Day
+```
+<Link
+    to="/monthly"
+    style={{ textDecoration: "none" }}
+    className="Login__button"
+>
+```
 
 ## (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)),
 
