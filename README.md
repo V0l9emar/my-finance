@@ -31,6 +31,11 @@
 #### Axios: 
 * !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/a308862511294ca80664364f928ef042-full.png)
 
+#### GET Updated balance on each operation:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/553fc28ca96d7883096f9887f1ba2663-full.png)
+
+#### Use Hooks:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6e42d420ac2a502094ca07d5cfa2c151-full.png)
 
  (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
 ---
