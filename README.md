@@ -4,20 +4,25 @@
 
 # 1. Installation instructions
     Clone or download the repository
-    Open Terminal and change directory to stay in '\my-finance\my-finance-app>' and run 'npm init' in the CLI;
-    Run 'npm run start' in the CLI;
-    Also You need to start server: Go to '\my-finance\server>' and run 'npm run devStart' in the CLI;
+    Open Terminal and change directory to stay in '\my-finance\my-finance-app>' and run 'npm init' in the CLI.
+    Run 'npm run start' in the CLI.
+    Also You need to start server: Go to '\my-finance\server>' and run 'npm run devStart' in the CLI.
 
 ## 2. Timeframe (How many days?)
-10 days
+10 days.
 
 ## 3. Overview (Что это для чего кому кто пользуется)
 #### I created this application for my father-in-law, who needs a simple phone application to track finances for every day.
-## 4. Technologies (
+## 4. Technologies
+### 4.1 - Front end:
+    JavaScript, HTML, CSS, Bootsrap, Fontawesome, React.js, Webpack, Axios.
 
-### 4.1 - Front (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
+    
+ (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
 
-### 4.2 Back (База данных (немного кода как создали и какие есть колонки и строки и для чего они), Server (как создали и какие есть Endpoints (get/ delete/ put/ update)-> приложить часть кода (как обрабатывали на севрере запрос get или delete))) )
+### 4.2 - Back end:
+    Node.js, Express, MySQL.
+(База данных (немного кода как создали и какие есть колонки и строки и для чего они), Server (как создали и какие есть Endpoints (get/ delete/ put/ update)-> приложить часть кода (как обрабатывали на севрере запрос get или delete))) )
 
 ## 5. API Endpoint Documentation (api/transaction - Methods : Get, Post И так далее)
 
