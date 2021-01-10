@@ -46,6 +46,9 @@
 #### React Charts:
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/f7a49f4bb007413a0850d298c97b72c0-full.png)
 
+#### Created Transaction Table from DataBase:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/54c8dc3bd87939c4155f03a738b10c48-full.png)
+
  (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
 ---
 ### Back end:

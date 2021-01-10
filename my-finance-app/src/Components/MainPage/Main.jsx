@@ -144,7 +144,6 @@ function Main() {
               <th>To</th>
               <th>Income</th>
               <th>Outcome</th>
-              {/* <th>Balance</th> */}
             </tr>
           </thead>
           <tbody>
@@ -155,7 +154,6 @@ function Main() {
                   <td>{val.name_to}</td>
                   <td>{val.trs_inc}</td>
                   <td>{val.trs_out}</td>
-                  {/* <td>{val.balance}</td> */}
                 </tr>
               );
             })}
