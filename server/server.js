@@ -113,7 +113,7 @@ app.get("/daily", (req, res) => {
     if (!err) {
       res.json(data);
     } else {
-      console.log(err);
+      console.log(err);outcomeSum
     }
   });
 });

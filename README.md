@@ -357,21 +357,43 @@ SELECT
 FROM transaction, (SELECT @balance := 0) AS variableInit
 ORDER BY transaction.trs_id ASC
 ```
+---
 
-## 5. API Endpoint Documentation (api/transaction - Methods : Get, Post И так далее)
+## 5. ERD:
+### Sign-Up-Flow
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6ed400d2e7762b806e8ae893529b6acb-full.png)
+
+## 6. API Endpoint Documentation (api/transaction - Methods : Get, Post И так далее)
+
+| GET                | POST          | DELETE           |
+|--------------------|---------------|------------------|
+| /transactions      | /transactions | /monthly/:trs_id |
+| /balance           | /users        |                  |
+| /incomeSum         |               |                  |
+| /outcomeSum        |               |                  |
+| /daily             |               |                  |
+| /incomeSum/daily   |               |                  |
+| /outcomeSum/daily  |               |                  |
+| /weekly            |               |                  |
+| /incomeSum/weekly  |               |                  |
+| /outcomeSum/weekly |               |                  |
+| /monthly           |               |                  |
+| /incomeSum/month   |               |                  |
+| /outcomeSum/month  |               |                  |
+| /users             |               |                  |
 
 ---
 
-## 6. Wireframes или Figma или Design
+## 7. Wireframes или Figma или Design
 
 ---
 
-# 7. Pages (Main (лого поля логин и регитсрация), Monthly Daily диаграмма, таблица и фунциональность добавить + - транзации)
+# 8. Pages (Main (лого поля логин и регитсрация), Monthly Daily диаграмма, таблица и фунциональность добавить + - транзации)
 
 ---
 
-## 8. Final Product
+## 9. Final Product
 
 ---
 
-## 9. How to improve the application and what to add (как улучшить приложение и что добавить)
+## 10. How to improve the application and what to add (как улучшить приложение и что добавить)
