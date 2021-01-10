@@ -2,7 +2,8 @@
 My Finance
 
 # 1. Installation instructions
-Instalation
+    Clone or download the repository
+    Open Terminal and change directory to stay in '\my-finance>' and Run 'npm init' in the CLI
 
 ## 2. Timeframe (How many days?)
 10 days
