@@ -1,6 +1,7 @@
 # my-finance
 My Finance
-!['Sign-Up-Flow'](https://drive.google.com/file/d/1fFFXzCurVl-wZy3Rzq-u8DTuQDfPQrAc/view?usp=sharing)
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/6d7543772360f23ac5036274aed4a8f3-full.png)
+
 # 1. Installation instructions
     Clone or download the repository
     Open Terminal and change directory to stay in '\my-finance>' and Run 'npm init' in the CLI
