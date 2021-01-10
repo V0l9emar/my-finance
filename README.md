@@ -1,5 +1,5 @@
 # my-finance
-My Finance
+
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/6d7543772360f23ac5036274aed4a8f3-full.png)
 
 # 1. Installation instructions
