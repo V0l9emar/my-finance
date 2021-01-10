@@ -67,7 +67,6 @@ function App() {
           <Monthly />
         </div>
       </Route>
-      {/* {<ReactBootStrap.Spinner animation="grow" variant="secondary" />} */}
     </BrowserRouter>
   );
 }
