@@ -215,14 +215,148 @@ useEffect(() => {
     className="Login__button"
 >
 ```
-
-## (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)),
-
+---
 ### Back end:
 
-    Node.js, Express, MySQL.
+    Node.js, Express.
 
-## (База данных (немного кода как создали и какие есть колонки и строки и для чего они), Server (как создали и какие есть Endpoints (get/ delete/ put/ update)-> приложить часть кода (как обрабатывали на севрере запрос get или delete))) )
+#### Stack of used packages:
+```
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "devStart": "nodemon server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.6"
+  }
+}
+```
+
+#### Connection queries:
+```
+const express = require("express");
+const app = express();
+const bodyParser = require("body-parser");
+const cors = require("cors");
+const mysql = require("mysql");
+
+app.use(express.json());
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const connection = mysql.createConnection({
+  host: "localhost",
+  port: 3306,
+  user: "root",
+  password: "**********",
+  database: "finance_proj",
+});
+connection.connect((err) => {
+  if (!err) {
+    console.log("Success");
+  } else {
+    console.log(err);
+  }
+});
+
+app.listen(5000, () => {
+  console.log("Listen 5000");
+});
+```
+
+#### GET request:
+```
+app.get("/transactions", (req, res) => {
+  const sqlGetTrns =
+    "SELECT trs_id, name_from, name_to, trs_inc, trs_out, balance FROM transaction";
+  connection.query(sqlGetTrns, (err, data) => {
+    if (!err) {
+      res.json(data);
+    } else {
+      console.log(err);
+    }
+  });
+});
+```
+
+#### POST request:
+```
+app.post("/transactions", (req, res) => {
+  const name_from = req.body.fromName;
+  const name_to = req.body.toName;
+  const trs_inc = req.body.trsInc;
+  const trs_out = req.body.trsOut;
+  const balance = req.body.balance;
+  const sqlInsertTrns =
+    "INSERT INTO transaction(name_from, name_to, trs_inc, trs_out, balance) VALUES(?, ?, ?, ?, ?);";
+  connection.query(
+    sqlInsertTrns,
+    [name_from, name_to, trs_inc, trs_out, balance],
+    (err, data) => {
+      if (!err) {
+        console.log(data);
+      } else {
+        console.log(err);
+      }
+    }
+  );
+});
+```
+
+#### DELETE request:
+```
+app.delete("/monthly/:trs_id", (req, res) => {
+  const trs_id = req.params.trs_id;
+  const sqlDelete = "DELETE FROM transaction WHERE trs_id = ?";
+  connection.query(sqlDelete, trs_id, (err, res) => {
+    if (!err) {
+      console.log(res);
+    } else {
+      console.log(err);
+    }
+  });
+});
+```
+
+### DataBase:
+
+    MySQL.
+
+#### Table on DataBase:
+```
+CREATE TABLE transaction(
+	trs_id INT PRIMARY KEY AUTO_INCREMENT,
+    name_from VARCHAR(100),
+    name_to VARCHAR(100),
+    trs_date DATETIME DEFAULT CURRENT_TIMESTAMP,
+    trs_inc INT,
+    trs_out INT,
+    balance INT
+);
+```
+
+#### Request from Server to GET balance:
+```
+SELECT 
+    transaction.trs_id,
+    transaction.trs_inc,
+    transaction.trs_out,
+    @balance := @balance + transaction.trs_inc - transaction.trs_out AS balance
+FROM transaction, (SELECT @balance := 0) AS variableInit
+ORDER BY transaction.trs_id ASC
+```
 
 ## 5. API Endpoint Documentation (api/transaction - Methods : Get, Post И так далее)
 

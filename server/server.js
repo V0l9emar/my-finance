@@ -3,8 +3,6 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
-const fs = require("fs");
-// const { id } = require('date-fns/locale');
 
 app.use(express.json());
 app.use(cors());
@@ -256,7 +254,6 @@ app.get("/outcomeSum/month", (req, res) => {
  * ############### Delete ################
  */
 app.delete("/monthly/:trs_id", (req, res) => {
-  // const name_to = req.body.toName;
   const trs_id = req.params.trs_id;
   const sqlDelete = "DELETE FROM transaction WHERE trs_id = ?";
   connection.query(sqlDelete, trs_id, (err, res) => {
