@@ -4,7 +4,9 @@
 
 # 1. Installation instructions
     Clone or download the repository
-    Open Terminal and change directory to stay in '\my-finance>' and Run 'npm init' in the CLI
+    Open Terminal and change directory to stay in '\my-finance\my-finance-app>' and Run 'npm init' in the CLI;
+    Run 'npm run start' in the CLI;
+    Also You need to start server: Go to '\my-finance\server>' and run 'npm run devStart' in the CLI;
 
 ## 2. Timeframe (How many days?)
 10 days
