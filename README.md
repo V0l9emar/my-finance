@@ -12,7 +12,7 @@
 10 days
 
 ## 3. Overview (Что это для чего кому кто пользуется)
-##### I created this application for my father-in-law, who needs a simple phone application to track finances for every day.
+#### I created this application for my father-in-law, who needs a simple phone application to track finances for every day.
 ## 4. Technologies (
 
 ### 4.1 - Front (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
