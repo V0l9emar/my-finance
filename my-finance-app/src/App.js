@@ -1,4 +1,3 @@
-// import React, { Component } from "react";
 import React, {useState,useEffect} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Start from "./Components/Start/Start";
@@ -10,8 +9,6 @@ import Weekly from "./Components/MainPage/Weekly/Weekly";
 import Monthly from "./Components/MainPage/Monthly/Monthly";
 import "./App.css";
 import { BrowserRouter, Route } from "react-router-dom";
-import * as ReactBootStrap from "react-bootstrap";
-// import Weekly from './Components/MainPage/Weekly/Weekly';
 
 function App() {
   const [isLoading, setLoading] = useState(true);
