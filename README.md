@@ -62,43 +62,14 @@
 
 ```
 import { BrowserRouter, Route } from "react-router-dom";
-    <BrowserRouter>
-      <Route path="/start">
-        <div className="App">
-          <Start />
-        </div>
-      </Route>
-      <Route path="/login">
-        <div className="App">
-          <Login />
-        </div>
-      </Route>
-      <Route path="/form">
-        <div className="App">
-          <Form />
-        </div>
-      </Route>
-      <Route path="/main">
-        <div className="App">
-          <Main />
-        </div>
-      </Route>
-      <Route path="/daily">
-        <div className="App">
-          <Daily />
-        </div>
-      </Route>
-      <Route path="/weekly">
-        <div className="App">
-          <Weekly />
-        </div>
-      </Route>
-      <Route path="/monthly">
-        <div className="App">
-          <Monthly />
-        </div>
-      </Route>
-    </BrowserRouter>
+
+<BrowserRouter>
+  <Route path="/start">
+    <div className="App">
+      <Start />
+    </div>
+  </Route>
+</BrowserRouter>
 ```
 
 #### Spiner:
