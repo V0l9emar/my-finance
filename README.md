@@ -20,22 +20,31 @@
     JavaScript, HTML, CSS, Bootsrap, Fontawesome, React.js, Webpack, Axios.
 
 #### Stack of used packages:
-* !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/396f71a7777e5184fa70714a22dc41d6-full.png)
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/396f71a7777e5184fa70714a22dc41d6-full.png)
 
 #### react-router:
-* !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/9d26858a871d134701a5301b73f1260b-full.png)
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/9d26858a871d134701a5301b73f1260b-full.png)
 
 #### Spiner:
-* !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/a717d0bef032a1a224fc66179a065c23-full.png)
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/a717d0bef032a1a224fc66179a065c23-full.png)
 
 #### Axios: 
-* !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/a308862511294ca80664364f928ef042-full.png)
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/a308862511294ca80664364f928ef042-full.png)
 
 #### GET Updated balance on each operation:
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/553fc28ca96d7883096f9887f1ba2663-full.png)
 
 #### Use Hooks:
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6e42d420ac2a502094ca07d5cfa2c151-full.png)
+
+#### Use In/Out for Chart graphic:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/6ed00b586de7a720d118b7503a67524f-full.png)
+
+#### Post Transacion to DataBase:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/02348c5f12aab704e2b8ea2726dbb590-full.png)
+
+#### React Charts:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/f7a49f4bb007413a0850d298c97b72c0-full.png)
 
  (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
 ---
