@@ -17,8 +17,8 @@
 ### Front end:
     JavaScript, HTML, CSS, Bootsrap, Fontawesome, React.js, Webpack, Axios.
 
-    * Stack of used packages:
-    !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/396f71a7777e5184fa70714a22dc41d6-full.png)
+* Stack of used packages:
+!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/10/396f71a7777e5184fa70714a22dc41d6-full.png)
     
 
  (опсисать и приложить часть кода и обьяснить что этот делает и лоя чего он (как запрос обрабатиываеться, где храняться данные, как эти данные передаюьбся в таблицу и в график)), 
