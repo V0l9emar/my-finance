@@ -408,6 +408,10 @@ On this page we have the opportunity to see our races and incomes during the mon
 ---
 
 ## 9. Final Product
+!['Prewiew'](https://cdn1.savepice.ru/uploads/2021/1/11/800625414ed765374ccf710b121e40d0-full.gif)
+---
+
+!['Prewiew'](https://cdn1.savepice.ru/uploads/2021/1/11/54782bae6cc7eaf9e2fc55ac7b7ccdef-full.gif)
 
 ---
 
