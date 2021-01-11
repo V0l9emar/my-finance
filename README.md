@@ -408,7 +408,7 @@ On this page we have the opportunity to see our races and incomes during the mon
 ---
 
 ## 9. Final Product
-
+![Alt text](relative/path/to/1.gif?raw=true "Title")
 
 ---
 
