@@ -388,7 +388,22 @@ ORDER BY transaction.trs_id ASC
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/7a9c55105929768862aa52d03155c174-full.png)
 ---
 
-# 8. Pages (Main (лого поля логин и регитсрация), Monthly Daily диаграмма, таблица и фунциональность добавить + - транзации)
+## 8. Pages 
+### Login page:
+This page allows the user to log into the application using their account. If you do not have a personal account, you can proceed to creating.
+
+### Form page:
+This page allows you to create a personal account. Please fill in all fields, otherwise the form will not be submitted.
+
+### Main page:
+On the main page at the top, you can see transactions for the month, week and current day.
+There is also a diagram of the sum of all expenses and incomes and their display on this diagram in accordance with their color scheme.
+Below the current balance is displayed, which is generated in accordance with the data of expenses and income.
+Further, the table obtained from the database is displayed, containing the name of the beneficiary and the payer, as well as the amount of the transaction, depending on the issue or receipt.
+At the bottom there are 2 buttons for receiving and transferring, which, when confirming the data, send information about the transaction to the database.
+
+### Monthly page:
+On this page we have the opportunity to see our races and incomes during the month, week and day. The transition between these pages (day, week, month) is carried out using the arrows located on either side of the page name. We also have the ability to delete the transaction when viewing, if required.
 
 ---
 
