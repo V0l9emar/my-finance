@@ -408,7 +408,7 @@ On this page we have the opportunity to see our races and incomes during the mon
 ---
 
 ## 9. Final Product
-!['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/298025f01d9abefa7cd181c125e45062-full.gif)
+!['Sign-Up-Flow'](https://cdn1.worldpng.ru/uploads/2021/1/11/512d946c1d6cf63044770bcb15f8ca5c-full.gif)
 ---
 
 !['Sign-Up-Flow'](https://cdn1.savepice.ru/uploads/2021/1/11/54782bae6cc7eaf9e2fc55ac7b7ccdef-full.gif)
