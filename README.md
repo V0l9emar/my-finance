@@ -408,7 +408,7 @@ On this page we have the opportunity to see our races and incomes during the mon
 ---
 
 ## 9. Final Product
-![Alt text](rhttps://github.com/V0l9emar/my-finance/blob/main/my-finance-app/src/img/1.gif)
+!['Sign-Up-Flow'](rhttps://github.com/V0l9emar/my-finance/blob/main/my-finance-app/src/img/1.gif)
 
 
 ---
