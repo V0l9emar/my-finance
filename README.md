@@ -416,3 +416,4 @@ On this page we have the opportunity to see our races and incomes during the mon
 ---
 
 ## 10. How to improve the application and what to add (как улучшить приложение и что добавить)
+In the future, I plan to split the components into smaller ones to unload the main page. Add a search string by name, as well as implement all the required improvements from the customer.
