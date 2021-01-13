@@ -1,0 +1,46 @@
+.Monthly{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 10px;
+    /* background-image: url("../../../img/finance.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50vh; */
+}
+
+.Monthly__header{
+    min-width: 290px ;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.Monthly__table{
+    margin: 20px 0;
+}
+
+.Monthly__table table{
+    width: 100%;
+    opacity: 0.95;
+}
+
+/* .Monthly__table th{
+    width: 50%;
+} */
+
+.Monthly__butt button{
+    background-color: #60C6D8;
+    border: #60C6D8;
+    opacity: 0.95;
+}
+
+.Monthly__table-date{
+    font-size: 8px;
+    font-weight: bold;
+}
+
+.no__border{
+    font-size: 20px;
+}

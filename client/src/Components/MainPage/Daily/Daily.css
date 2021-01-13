@@ -1,0 +1,37 @@
+.Daily{
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    height: 100vh;
+    margin-top: 10px;
+    /* background-image: url("../../../img/finance.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50vh; */
+}
+
+.Daily__header{
+    min-width: 290px ;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+}
+
+.Daily__table{
+    margin: 20px 0;
+}
+
+.Daily__table table{
+    width: 100%;
+    opacity: 0.95;
+}
+
+.Daily__butt button{
+    background-color: #60C6D8;
+    border: #60C6D8;
+    opacity: 0.95;
+}
+
+.no__border{
+    font-size: 20px;
+}
