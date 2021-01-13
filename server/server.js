@@ -1,12 +1,39 @@
 const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
+const app = express();
+
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000"],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    key: "userId",
+    secret: "subscribe",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      expires: 60 * 60 * 24,
+    },
+  })
+);
 
 const connection = mysql.createConnection({
   host: "localhost",
@@ -29,7 +56,7 @@ connection.connect((err) => {
 
 app.get("/transactions", (req, res) => {
   const sqlGetTrns =
-    "SELECT trs_id, name_from, name_to, trs_inc, trs_out, balance FROM transaction";
+    "SELECT * FROM transaction ORDER BY trs_id DESC LIMIT 5;";
   connection.query(sqlGetTrns, (err, data) => {
     if (!err) {
       res.json(data);
@@ -113,21 +140,12 @@ app.get("/daily", (req, res) => {
     if (!err) {
       res.json(data);
     } else {
-      console.log(err);outcomeSum
+      console.log(err);
+      outcomeSum;
     }
   });
 });
-// app.get("/balance/daily", (req, res) => {
-//   const sqlGetTrns =
-//     "SELECT trs_id, trs_inc, trs_out, trs_date @balance := @balance + transaction.trs_inc - transaction.trs_out AS balance FROM transaction, (SELECT @balance := 0) AS variableInit ORDER BY transaction.trs_id ASC";
-//   connection.query(sqlGetTrns, (err, data) => {
-//     if (!err) {
-//       res.json(data);
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
+
 app.get("/incomeSum/daily", (req, res) => {
   const sqlGetInc =
     "SELECT @trs_inc := SUM(trs_inc) AS trs_inc FROM transaction WHERE trs_date >= DATE_SUB( CURDATE(), INTERVAL 1 DAY );";
@@ -166,17 +184,7 @@ app.get("/weekly", (req, res) => {
     }
   });
 });
-// app.get("/balance/weekly", (req, res) => {
-//   const sqlGetTrns =
-//     "SELECT trs_id, trs_inc, trs_out, trs_date @balance := @balance + transaction.trs_inc - transaction.trs_out AS balance FROM transaction, (SELECT @balance := 0) AS variableInit ORDER BY transaction.trs_id ASC";
-//   connection.query(sqlGetTrns, (err, data) => {
-//     if (!err) {
-//       res.json(data);
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
+
 app.get("/incomeSum/weekly", (req, res) => {
   const sqlGetInc =
     "SELECT @trs_inc := SUM(trs_inc) AS trs_inc FROM transaction WHERE trs_date >= DATE_SUB( CURDATE(), INTERVAL 1 WEEK );";
@@ -216,17 +224,6 @@ app.get("/monthly", (req, res) => {
   });
 });
 
-// app.get("/balance/month", (req, res) => {
-//   const sqlGetTrns =
-//     "SELECT trs_id, trs_inc, trs_out, trs_date @balance := @balance + transaction.trs_inc - transaction.trs_out AS balance FROM transaction, (SELECT @balance := 0) AS variableInit ORDER BY transaction.trs_id ASC";
-//   connection.query(sqlGetTrns, (err, data) => {
-//     if (!err) {
-//       res.json(data);
-//     } else {
-//       console.log(err);
-//     }
-//   });
-// });
 app.get("/incomeSum/month", (req, res) => {
   const sqlGetInc =
     "SELECT @trs_inc := SUM(trs_inc) AS trs_inc FROM transaction WHERE trs_date >= DATE_SUB( CURDATE(), INTERVAL 1 MONTH );";
@@ -278,22 +275,64 @@ app.get("/users", (req, res) => {
     }
   });
 });
-app.post("/users", (req, res) => {
-  const user_name = req.body.userName;
-  const user_lastname = req.body.userLastName;
-  const user_mail = req.body.userMail;
-  const user_birthday = req.body.userBirthday;
-  const passw = req.body.userPassword;
-  const sqlInsertUser =
-    "INSERT INTO user(user_name, user_lastname, user_mail, user_birthday, passw) VALUES(?, ?, ?, ?, ?);";
+app.post("/register", (req, res) => {
+  const name = req.body.userNameReq;
+  const lastname = req.body.userLastNameReq;
+  const mail = req.body.userMailReq;
+  const birthday = req.body.userBirthdayReq;
+  const password = req.body.userPasswordReq;
+  const sqlRegistertUser =
+    "INSERT INTO user(name, lastname, mail, birthday, password) VALUES(?, ?, ?, ?, ?);";
+
+  bcrypt.hash(password, saltRounds, (err, hash) => {
+    if (err) {
+      console.log(err);
+    }
+    connection.query(
+      sqlRegistertUser,
+      [name, lastname, mail, birthday, hash],
+      (err, result) => {
+        if (!err) {
+          console.log(result);
+        } else {
+          console.log(err);
+        }
+      }
+    );
+  });
+});
+
+app.get("/login", (req, res) => {
+  if (req.session.user) {
+    res.send({ loggedIn: true, user: req.session.user });
+  }else{
+    res.send({loggedIn: false})
+  }
+});
+
+app.post("/login", (req, res) => {
+  const mail = req.body.userMail;
+  const password = req.body.userPassword;
+
   connection.query(
-    sqlInsertUser,
-    [user_name, user_lastname, user_mail, user_birthday, passw],
-    (err, data) => {
-      if (!err) {
-        console.log(data);
+    "SELECT * FROM user WHERE mail = ?;",
+    mail,
+    (err, result) => {
+      if (err) {
+        res.send({ err: err });
+      }
+      if (result.length > 0) {
+        bcrypt.compare(password, result[0].password, (err, response) => {
+          if(response){
+            req.session.user = result;
+            console.log(req.session.user)
+            res.send(result)
+          }else{
+            res.send({ message: "Wrong mail/password combination!" });
+          }
+        });
       } else {
-        console.log(err);
+        res.send({ message: "User doesn't exist..." });
       }
     }
   );
