@@ -328,7 +328,7 @@ app.post("/login", (req, res) => {
             console.log(req.session.user)
             res.send(result)
           }else{
-            res.send({ message: "Wrong password!" });
+            res.send({ message: "Something went wrong!" });
           }
         });
       } else {
