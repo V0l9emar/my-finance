@@ -27,7 +27,7 @@
 
     JavaScript, HTML, CSS, Bootsrap, Fontawesome, React.js, Webpack, Axios.
 
-#### Stack of used packages:
+#### Stack of used "dependencies":
 
 ```
 {
@@ -72,7 +72,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 </BrowserRouter>
 ```
 
-#### Spiner:
+#### Load Spiner:
 
 ```
   const [isLoading, setLoading] = useState(true);
@@ -220,7 +220,7 @@ useEffect(() => {
 
     Node.js, Express.
 
-#### Stack of used packages:
+#### Stack of used "dependencies":
 ```
 {
   "name": "server",
@@ -234,10 +234,14 @@ useEffect(() => {
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
+    "dependencies": {
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.6"
   }
