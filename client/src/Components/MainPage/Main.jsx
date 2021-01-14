@@ -20,7 +20,7 @@ function Main() {
   useEffect(() => {
     Axios.get("http://localhost:5000/transactions").then((response) => {
       getList(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     });
   }, []);
 

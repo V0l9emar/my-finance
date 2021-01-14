@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "./Login.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
+import { faFrown, faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link, useHistory, Redirect } from "react-router-dom";
 // import { Axios } from 'axios';
 
@@ -10,14 +10,15 @@ function Authorization() {
   const history = useHistory();
   const [userMail, setUserMail] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  // const [loginStatus, setLoginStatus] = useState("");
+  const [loginStatus, setLoginStatus] = useState(false);
 
   // const logOnMain = ()=> {
   //   props.history.push("/main");
   // }
   const handleClick = () => {
     history.push("/main");
-  }
+  };
   Axios.defaults.withCredentials = true;
   const submitLogin = () => {
     Axios.post("http://localhost:5000/login", {
@@ -25,10 +26,12 @@ function Authorization() {
       userPassword: userPassword,
     }).then((response) => {
       console.log(response);
-      if (response.data.message) {
-        setLoginStatus(response.data.message);
+      if (!response.data.auth) {
+        // setLoginStatus(response.data.message);
+        setLoginStatus(false);
       } else {
-        setLoginStatus(response.data[0].name);
+        // setLoginStatus(response.data.name);
+        setLoginStatus(true);
         handleClick();
       }
     });
@@ -82,7 +85,10 @@ function Authorization() {
           style={{ textDecoration: "none" }}
           className="Login__button"
         > */}
-        <h6>{loginStatus}</h6>
+        <h6>
+          {loginStatus && <FontAwesomeIcon icon={faFrown} size="1x" color="#60C6D8" />}
+          
+        </h6>
         <button onClick={submitLogin}>Sign-In</button>
         {/* </Link> */}
       </div>

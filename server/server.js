@@ -9,6 +9,8 @@ const session = require("express-session");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
+const jwt = require("jsonwebtoken");
+
 const app = express();
 
 app.use(express.json());
@@ -55,8 +57,7 @@ connection.connect((err) => {
  */
 
 app.get("/transactions", (req, res) => {
-  const sqlGetTrns =
-    "SELECT * FROM transaction ORDER BY trs_id DESC LIMIT 5;";
+  const sqlGetTrns = "SELECT * FROM transaction ORDER BY trs_id DESC LIMIT 5;";
   connection.query(sqlGetTrns, (err, data) => {
     if (!err) {
       res.json(data);
@@ -302,11 +303,32 @@ app.post("/register", (req, res) => {
   });
 });
 
+const verifyJWT = (req, res, next) => {
+  const token = req.headers["x-access-token"]
+
+  if(!token){
+    res.send(" We need a token, please give it to us next time!")
+  }else{
+    jwt.verify(token, "jwtSecret", (err, decoded) => {
+      if(err){
+        res.json({auth: false, message: "U failed to authenticate"})
+      }else{
+        req.userId = decoded.id;
+        next();
+      }
+    })
+  }
+}
+
+app.get('/isUserAuth', verifyJWT, (req, res) => {
+  res.send("Congrats! U are authenticated")
+})
+
 app.get("/login", (req, res) => {
   if (req.session.user) {
     res.send({ loggedIn: true, user: req.session.user });
-  }else{
-    res.send({loggedIn: false})
+  } else {
+    res.send({ loggedIn: false });
   }
 });
 
@@ -323,16 +345,23 @@ app.post("/login", (req, res) => {
       }
       if (result.length > 0) {
         bcrypt.compare(password, result[0].password, (err, response) => {
-          if(response){
+          if (response) {
+            // req.session.user = result;
+            // console.log(req.session.user);
+            const id = result[0].id;
+            const token = jwt.sign({id}, "jwtSecret", {
+              expiresIn: 300,
+            })
+
             req.session.user = result;
-            console.log(req.session.user)
-            res.send(result)
-          }else{
-            res.send({ message: "Something went wrong!" });
+
+            res.json({auth: true, token: token, result: result});
+          } else {
+            res.json({auth: false, message: "Something went wrong..." });
           }
         });
       } else {
-        res.send({ message: "User doesn't exist..." });
+        res.json({ auth: false, message: "User doesn't exist..." });
       }
     }
   );
