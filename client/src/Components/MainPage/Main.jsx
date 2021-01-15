@@ -71,7 +71,7 @@ function Main() {
   const submitOperationInc = () => {
     Axios.post("http://localhost:5000/transactions", {
       fromName: fromName,
-      toName: toName,
+      toName: "Me",
       trsInc: trsInc,
       trsOut: 0,
     }).then(() => {
@@ -82,7 +82,7 @@ function Main() {
 
   const submitOperationOut = () => {
     Axios.post("http://localhost:5000/transactions", {
-      fromName: fromName,
+      fromName: "Me",
       toName: toName,
       trsInc: 0,
       trsOut: trsOut,
@@ -229,7 +229,8 @@ function Main() {
                     id="to"
                     name="toName"
                     aria-describedby="toHelp"
-                    placeholder="To"
+                    value="Me"
+                    disabled
                     onChange={(e) => {
                       setToName(e.target.value);
                     }}
@@ -305,7 +306,9 @@ function Main() {
                     id="from"
                     name="fromName"
                     aria-describedby="fromHelp"
-                    placeholder="From"
+                    // placeholder="From"
+                    value="Me"
+                    disabled
                     onChange={(e) => {
                       setFromName(e.target.value);
                     }}
@@ -361,20 +364,8 @@ function Main() {
           </div>
         </div>
       </div>
-      {/* {<ReactBootStrap.Spinner animation="grow" variant="secondary" />} */}
-      {/* <Loader
-         type="Puff"
-         color="#00BFFF"
-         height={100}
-         width={100}
-         timeout={3000} //3 secs
- 
-      /> */}
     </div>
     // </BrowserRouter>
   );
-  //   }
 }
-
-// export default Main;
 export default Main;
